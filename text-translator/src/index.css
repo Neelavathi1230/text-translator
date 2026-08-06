@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-paper text-ink font-body antialiased transition-colors duration-300;
+  }
+
+  html.dark body {
+    @apply bg-dusk-bg text-dusk-text;
+  }
+
+  ::selection {
+    @apply bg-marigold/30;
+  }
+
+  *:focus-visible {
+    outline: 2px solid #1F9D8A;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-ink/15 rounded-full;
+  }
+  html.dark ::-webkit-scrollbar-thumb {
+    @apply bg-dusk-text/15;
+  }
+}
+
+@layer utilities {
+  .seam-gradient {
+    background: linear-gradient(90deg, #E8A33D, #1F9D8A, #E8A33D);
+    background-size: 200% 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-seam,
+    .animate-fadeUp,
+    .animate-toastIn {
+      animation: none !important;
+    }
+  }
+}
